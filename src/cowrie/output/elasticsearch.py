@@ -39,14 +39,16 @@ class Output(cowrie.core.output.Output):
         if (username is not None) and (password is not None):
             options["http_auth"] = (username, password)
         if use_ssl:
-            options["use_ssl"] = use_ssl
-            options["ssl_show_warn"] = False
+            scheme = "https"
+            sslWarn = False
             options["verify_certs"] = verify_certs
             if verify_certs:
                 options["ca_certs"] = ca_certs
-
+        else:
+            scheme = "http"
+            sslWarn = True
         # connect
-        self.es = Elasticsearch(f"{host}:{port}", **options)
+        self.es = Elasticsearch(f"{host}:{port}", use_ssl=use_ssl, scheme=schemeSetting, ssl_show_warn=sslWarn)
         # self.es = Elasticsearch('{0}:{1}'.format(self.host, self.port))
 
         self.check_index()
