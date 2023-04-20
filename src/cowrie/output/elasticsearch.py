@@ -39,7 +39,6 @@ class Output(cowrie.core.output.Output):
         if (username is not None) and (password is not None):
             options["http_auth"] = (username, password)
         if use_ssl:
-            options["scheme"] = "https"
             options["use_ssl"] = use_ssl
             options["ssl_show_warn"] = False
             options["verify_certs"] = verify_certs
