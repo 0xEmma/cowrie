@@ -46,7 +46,7 @@ class Output(cowrie.core.output.Output):
         else:
             sslWarn = True
         # connect
-        self.es = Elasticsearch(f"{host}:{port}", ssl_show_warn=sslWarn)
+        self.es = Elasticsearch(f"{host}:{port}", ssl_show_warn=sslWarn, verify_certs=False)
         # self.es = Elasticsearch('{0}:{1}'.format(self.host, self.port))
 
         self.check_index()
