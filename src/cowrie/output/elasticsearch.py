@@ -120,5 +120,5 @@ class Output(cowrie.core.output.Output):
                 del logentry[i]
 
         self.es.index(
-            index=self.index, doc_type=self.type, body=logentry, pipeline=self.pipeline
+            index=self.index, body=logentry, pipeline=self.pipeline
         )
